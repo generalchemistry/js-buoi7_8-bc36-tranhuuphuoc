@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+        }
+        #alertNumValue{
+            margin-left:-15px;
+        }
+            
+        #valueNum,#newArray_ex6,#newArray_ex7,#valueNum_ex9 {
+            list-style: none;
+            display:grid;
+            grid-template-columns: repeat(12,1fr);
+            
+        }
+        #valueNum li,#newArray_ex6 li,#newArray_ex7 li,#valueNum_ex9 li{
+            padding:0;
+        }
+        .nav-tabs{
+            border:none;
+        }
+        .nav-link:focus{
+            outline:none;
+        }
+        .nav-link{
+            width:250px;
+            margin-bottom:10px;
+            text-align:left;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container numValue mt-2 ">
+        <div class="row mb-3" >
+            <input id="inputNum" type="number" class="form-control col-5 mr-3 placeholder inputArray" placeholder="Nhập số nguyên">
+            <button class="btn btn-primary col-2  mr-3 addNum">Thêm số</button>
+            <button class="btn btn-danger col-2 removeNum">Xoá số</button>
+        </div>
+        <div class="bg-light p-3"style="width:100%; min-height:120px; margin-left: -15px;">
+            <ul id="valueNum" class="informArrayValue">
+            </ul>
+        </div>
+        <span class="text-danger mt-3 alert" style="margin-left:-35px"></span>
+    </div>
+    <div class="container p-0 mt-2 d-flex" >
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs flex-column" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="exercise1-tab" data-toggle="tab" data-target="#exercise1"
+                    type="button" role="tab" aria-controls="exercise1-tab" aria-selected="true">
+                    1. Tổng các số dương
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="exercise2-tab" data-toggle="tab" data-target="#exercise2" type="button"
+                    role="tab" aria-controls="exercise2-tab" aria-selected="true">
+                    2. Đếm số dương
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="exercise3-tab" data-toggle="tab" data-target="#exercise3" type="button"
+                    role="tab" aria-controls="exercise3-tab" aria-selected="true">
+                    3. Số nhỏ nhất
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="exercise4-tab" data-toggle="tab" data-target="#exercise4" type="button"
+                    role="tab" aria-controls="exercise4-tab" aria-selected="true">
+                    4. Số dương nhỏ nhất
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="exercise5-tab" data-toggle="tab" data-target="#exercise5" type="button"
+                    role="tab" aria-controls="exercise5-tab" aria-selected="true">
+                    5. Số chẵn cuối cùng
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="exercise6-tab" data-toggle="tab" data-target="#exercise6" type="button"
+                    role="tab" aria-controls="exercise6-tab" aria-selected="true">
+                    6. Đổi chỗ giá trị ở 2 vị trí 
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="exercise7-tab" data-toggle="tab" data-target="#exercise7" type="button"
+                    role="tab" aria-controls="exercise7-tab" aria-selected="true">
+                    7. Sắp xếp tăng dần
+                </button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="exercise8-tab" data-toggle="tab" data-target="#exercise8" type="button"
+                    role="tab" aria-controls="exercise8-tab" aria-selected="true">
+                    8. Số nguyên tố đầu tiên
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="exercise9-tab" data-toggle="tab" data-target="#exercise9" type="button"
+                    role="tab" aria-controls="exercise9-tab" aria-selected="true">
+                    9. Đếm số nguyên
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="exercise10-tab" data-toggle="tab" data-target="#exercise10" type="button"
+                    role="tab" aria-controls="exercise10-tab" aria-selected="true">
+                    10. Số dương - số âm
+                </button>
+            </li>
+            <p class="text-success d-none"></p>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content ml-3" style="min-width:800px">
+            <div class="tab-pane active" id="exercise1" role="tabpanel" aria-labelledby="exercise1-tab">
+                <h3>Bài 1. Tổng các số nguyên dương</h3>
+                <button class="btn-success btn my-3">Tính tổng</button>
+                <p class="text-success mb-0"></p>
+                <p class="text-danger alert p-0"></p>
+            </div>
+            <div class="tab-pane" id="exercise2" role="tabpanel" aria-labelledby="exercise2-tab">
+                <h3>Bài 2. Đếm số nguyên dương</h3>
+                <button class="btn-success btn my-3">Đếm số</button>
+                <p class="text-success mb-0"></p>
+                <p class="text-danger alert p-0"></p>
+            </div>
+            <div class="tab-pane" id="exercise3" role="tabpanel" aria-labelledby="exercise3-tab">
+                <h3>Bài 3. Số nhỏ nhất</h3>
+                <button class="btn-success btn my-3">Tìm số</button>
+                <p class="text-success mb-0"></p>
+                <p class="text-danger alert p-0"></p>
+            </div>
+            <div class="tab-pane" id="exercise4" role="tabpanel" aria-labelledby="exercise4-tab">
+                <h3>Bài 4. Số dương nhỏ nhất</h3>
+                <button class="btn-success btn my-3">Tìm số</button>
+                <p class="text-success mb-0"></p>
+                <p class="text-danger alert p-0"></p>
+            </div>
+            <div class="tab-pane" id="exercise5" role="tabpanel" aria-labelledby="exercise5-tab">
+                <h3>Bài 5. Số chẵn cuối cùng</h3>
+                <button class="btn-success btn my-3">Tìm số</button>
+                <p class="text-success mb-0"></p>
+                <p class="text-danger alert p-0"></p>
+            </div>
+            <div class="tab-pane" id="exercise6" role="tabpanel" aria-labelledby="exercise6-tab">
+                <h3>Bài 6. Đổi giá trị 2 vị trí</h3>
+                <form action="" class="form-group mt-3 mb-0">
+                    <div class="row align-items-center justify-content-between pr-3">
+                        <h6 class="col-4 m-0">Nhập vị trí cần đổi giá trị</h6>
+                        <input type="number" id="firstPlace" placeholder="Vị trí thứ nhất" class="form-control col-3  mr-3" required>
+                        <input type="number" id="secondPlace" placeholder="Vị trí thứ hai" class="form-control col-3"required > 
+                    </div>
+                </form>
+                <div class="row justify-content-between my-2  mx-0">
+                    <p class="text-success d-none"></p>
+                    <p class="text-danger alert p-0 col-6"></p>
+                    <button class="btn-success btn col-2 m-0">Đổi giá trị</button>
+                </div>   
+                <div class="bg-light p-3"style="width:100%; min-height:120px;">
+                    <ul id="newArray_ex6">
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-pane" id="exercise7" role="tabpanel" aria-labelledby="exercise7-tab">
+                <h3>Bài 7. Sắp xếp mảng theo thứ tự tăng dần</h3>
+                <button class="btn-success btn mb-0 mt-3">Sắp xếp</button>
+                <p class="text-success mb-0 d-none"></p>
+                <p class="text-danger alert mt-3 p-0"></p>
+                <div class="bg-light p-3"style="width:100%; min-height:120px;">
+                    <ul id="newArray_ex7">
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-pane" id="exercise8" role="tabpanel" aria-labelledby="exercise8-tab">
+                <h3>Bài 8. Số nguyên tố đầu tiên</h3>
+                <button class="btn-success btn my-3">Tìm số</button>
+                <p class="text-success mb-0"></p>
+                <p class="text-danger alert p-0"></p>
+            </div>
+            <div class="tab-pane" id="exercise9" role="tabpanel" aria-labelledby="exercise9-tab">
+                <h3>Bài 9. Đếm số nguyên</h3>
+                <div class="row mb-3 ml-1" >
+                    <input id="inputNum_ex9" type="number" class="form-control col-5 mr-3 placeholder inputArray" placeholder="Nhập số">
+                    <button class="btn btn-primary col-2  mr-3 addNum">Thêm số</button>
+                    <button class="btn btn-danger col-2 removeNum">Xoá số</button>
+                </div>
+                <div class="bg-light p-3"style="width:100%; min-height:120px; ">
+                    <ul id="valueNum_ex9" class="informArrayValue">
+                    </ul>
+                </div>
+                <button class="btn-success btn m-0 mt-3">Đếm số</button>
+                <p class="text-success mt-0"></p>
+                <p class="text-danger alert p-0"></p>
+            </div>
+            <div class="tab-pane" id="exercise10" role="tabpanel" aria-labelledby="exercise10-tab">
+                <h3>Bài 10. So sánh số lượng số dương - số âm</h3>
+                <button class="btn-success btn my-3">So sánh</button>
+                <p class="text-success mb-0"></p>
+                <p class="text-danger alert p-0"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+        <script src="./javascript/index.js"></script>
+</body>
+
+</html>
